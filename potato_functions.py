@@ -11,5 +11,5 @@ def update_potato():
     pass
 
 def delete_potato():
-    # logic for how to find info here
+    # logic for how to find info here.
     pass
