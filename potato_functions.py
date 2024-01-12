@@ -13,7 +13,7 @@ def read_potatos_by_discord_id():
 
 def update_potato():
 
-    # logic for how to find info here
+    # logic for how to find info here.
     pass
 
 def delete_potato():
