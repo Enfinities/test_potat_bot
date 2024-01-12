@@ -5,11 +5,11 @@ def create_potato(owner_name, owner_discord_id, name, potato_type, price, accomp
 def read_potatos_by_discord_id(a,b):
     # logic for how to find info here
     result_potatoes = []
-    for potato in potatoes:
-        if potato['owner_discord_id'] == discord_id:
+    for potato in a:
+        if potato['owner_discord_id'] == b:
             result_potatoes.append(potato)
 
-    print(result_potatoes)
+    return(result_potatoes)
 
 def update_potato():
 
