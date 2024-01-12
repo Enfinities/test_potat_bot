@@ -47,4 +47,4 @@ def test_read_potatos_by_discord_id_no_match():
     result_potatoes = read_potatos_by_discord_id(potatoes, 999999999)
 
     # Check if the result is None since there are no Potatoes with the given discord_id
-    assert result_potatoes is None
+    assert result_potatoes is []
