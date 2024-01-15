@@ -12,11 +12,13 @@ def read_potatos_by_discord_id(a,b):
     return(result_potatoes)
 
 import json
-def loaded_potatoes(saved_filename):
+def load_potatoes(saved_filename):
     with open(save_filename, 'r') as file:
         loaded_potatoes = json.load(file)
 
     return (loaded_potatoes)
+def save_potatoes():
+   pass
 def update_potato():
 
     # logic for how to find info here
