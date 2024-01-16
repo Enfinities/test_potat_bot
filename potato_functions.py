@@ -19,8 +19,9 @@ def load_potatoes(save_filename):
         loaded_potatoes = json.load(file)
 
     return (loaded_potatoes)
-def save_potatoes():
-   pass
+def save_potatoes(save_filename):
+   potatoes = {save_filename}
+   return potatoes
 def update_potato():
 
     # logic for how to find info here
