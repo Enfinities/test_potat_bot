@@ -20,17 +20,8 @@ def load_potatoes(save_filename):
 
     return (loaded_potatoes)
 def save_potatoes(potatoes,save_filename):
-    potatoes = {
-        "owner_name": owner_name
-        "owner_discord_id": owner_discord_id
-        "name": name
-        "potato_type": potato_type
-        "price": price
-        "accomplishment": accomplishment
-        "date": date
-    }
-    with open(save_filename, 'w') as outfile:
-        json.dump(potatoes,outfile)
+    with open(save_filename, 'w') as file:
+        json.dump(potatoes,file)
 
     return potatoes
 def update_potato():
