@@ -19,7 +19,7 @@ def load_potatoes(save_filename):
         loaded_potatoes = json.load(file)
 
     return (loaded_potatoes)
-def save_potatoes(save_filename,potatoes):
+def save_potatoes(potatoes,save_filename):
     with open(save_filename, 'w') as file:
         potatoes = {}
     return potatoes
