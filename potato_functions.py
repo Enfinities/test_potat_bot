@@ -25,7 +25,7 @@ def save_potatoes(save_filename,potatoes):
     return potatoes
 def update_potato():
 
-    # logic for how to find info here
+    # logic for how to find info here.
     pass
 
 def delete_potato():
