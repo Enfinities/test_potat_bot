@@ -19,13 +19,30 @@ def load_potatoes(save_filename):
         loaded_potatoes = json.load(file)
 
     return (loaded_potatoes)
-def save_potatoes():
-   pass
+def save_potatoes(potatoes,save_filename):
+    with open(save_filename, 'w') as file:
+        json.dump(potatoes,file)
+
+    return potatoes
 def update_potato():
 
-    # logic for how to find info here
+    # logic for how to find info here.
     pass
 
 def delete_potato():
-    # logic for how to find info here.
+    # logic for how to find info here
     pass
+
+import os
+
+def file_exists(file_path):
+    """
+    Check if a file exists.
+
+    Args:
+    - file_path (str): The path to the file.
+
+    Returns:
+    - bool: True if the file exists, False otherwise.
+    """
+    return os.path.exists(file_path)
