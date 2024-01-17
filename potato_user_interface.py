@@ -37,8 +37,11 @@ async def create_potato(ctx: SlashContext, potato_name: str, potato_type: str, p
     # 1. Use your create_potato function to make the potato from the inputs
     # 2. Use your save potatoes function to save the potato
     #   - database_filename, on line 9, will keep the name of the file
+    # saves the list of all potatoes to a json file
     #################################################
-
+    new_potato = potato_functions.create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date)
+    all_potatoes.append(new_potato)
+    potato_functions.save_potatoes(all_potatoes,database_filename)
     await ctx.send(f"Owner: {owner_name}\nPotato Name: {name}\n"
                    f"Potato Type: {potato_type}\nPrice: {price}\n"
                    f"Accomplishment: {accomplishment}")
