@@ -37,6 +37,9 @@ async def create_potato(ctx: SlashContext, potato_name: str, potato_type: str, p
     # 1. Use your create_potato function to make the potato from the inputs
     # 2. Use your save potatoes function to save the potato
     #   - database_filename, on line 9, will keep the name of the file
+    # ------HW BELOW------
+    # assigns created potatoes to new_potato variable
+    # entries from new_potato variable gets added to all_potatoes dictionary
     # saves the list of all potatoes to a json file
     #################################################
     new_potato = potato_functions.create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date)
