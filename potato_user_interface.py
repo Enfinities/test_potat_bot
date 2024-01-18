@@ -1,10 +1,19 @@
 from decouple import config
 import interactions
+import git
 from interactions import (slash_command, SlashContext,
                           SlashCommand, slash_option,
                           OptionType, SlashCommandChoice)
+from pathlib import Path
 from datetime import datetime
 import potato_functions
+
+def push_database():
+    current_directory = Path.cwd()
+    repo = git.Repo(str(current_directory))
+    repo.git.add(database_filename)
+    repo.git.push()
+    print("database pushed")
 
 database_filename = "my_potatoes.json"
 all_potatoes = []
