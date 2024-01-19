@@ -17,7 +17,10 @@ def push_database():
 
 database_filename = "my_potatoes.json"
 all_potatoes = []
-
+try:
+    all_potatoes = potato_functions.load_potatoes(database_filename)
+except:
+    pass
 # Base command
 base_command = SlashCommand(
     name="potato",
@@ -71,6 +74,7 @@ async def read_potatoes(ctx: SlashContext):
     # 2. You can send the result back to the user using that await ctx.send function
     #   - Feel free to format it prettily, or just put the potato dictionary in there. Either works.
     #################################################
+    load_potato = potato_functions.read_potatoes_by_discord_id(all_potatoes,owner_discord_id)
 
     await ctx.send(f"Owner: {owner_name}\n"
                    f"Discord_ID: {owner_discord_id}")
