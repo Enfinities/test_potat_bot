@@ -46,3 +46,29 @@ def file_exists(file_path):
     - bool: True if the file exists, False otherwise.
     """
     return os.path.exists(file_path)
+
+
+def format_achievements(achievements):
+    owner_achievements = {}
+
+    for achievement in achievements:
+        owner_name = achievement['owner_name']
+
+        if owner_name not in owner_achievements:
+            owner_achievements[owner_name] = []
+
+        owner_achievements[owner_name].append(achievement)
+
+    formatted_output = ""
+
+    for owner_name, achievements_list in owner_achievements.items():
+        formatted_output += f"# {owner_name}\n"
+
+        for achievement in achievements_list:
+            formatted_output += f"- name: {achievement['name']}\n"
+            formatted_output += f"- potato_type: {achievement['potato_type']}\n"
+            formatted_output += f"- price: ${achievement['price']}\n"
+            formatted_output += f"- accomplishment: {achievement['accomplishment']}\n"
+            formatted_output += f"- date: {achievement['date']}\n\n"
+
+    return formatted_output
