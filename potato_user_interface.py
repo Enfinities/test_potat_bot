@@ -8,9 +8,9 @@ from pathlib import Path
 from datetime import datetime
 import potato_functions
 potato_functions.pull_database()
+from potato_functions import database_filename
 
 
-database_filename = "my_potatoes.json"
 all_potatoes = []
 try:
     all_potatoes = potato_functions.load_potatoes(database_filename)
