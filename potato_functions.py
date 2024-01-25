@@ -72,3 +72,24 @@ def format_achievements(achievements):
             formatted_output += f"- date: {achievement['date']}\n\n"
 
     return formatted_output
+
+def pull_database():
+    current_directory = Path.cwd()
+    repo = git.Repo(str(current_directory))
+    origin = repo.remote("origin")
+    origin.fetch()
+
+    repo.git.pull(origin, repo.head.ref)
+
+    print("Database pulled")
+
+
+def push_database(commit_message):
+    current_directory = Path.cwd()
+    repo = git.Repo(str(current_directory))
+    origin = repo.remote("origin")
+    origin.fetch()
+    repo.index.add([database_filename])
+    repo.index.commit(commit_message)
+    repo.git.push(origin, repo.head.ref)
+    print("database pushed")
