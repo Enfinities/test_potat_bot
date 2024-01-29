@@ -52,6 +52,7 @@ async def create_potato(ctx: SlashContext, potato_name: str, potato_type: str, p
     new_potato = potato_functions.create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date)
     all_potatoes.append(new_potato)
     potato_functions.save_potatoes(all_potatoes,database_filename)
+    await ctx.defer()
     potato_functions.push_database('auto update')
 
     await ctx.send(f"Owner: {owner_name}\nPotato Name: {name}\n"
