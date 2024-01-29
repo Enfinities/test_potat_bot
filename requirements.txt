@@ -1,0 +1,4 @@
+python-decouple
+GitPython
+discord-py-interactions
+pytest
