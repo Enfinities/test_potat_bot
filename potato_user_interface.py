@@ -7,7 +7,6 @@ from interactions import (slash_command, SlashContext,
 from pathlib import Path
 from datetime import datetime
 import potato_functions
-potato_functions.pull_database()
 from potato_functions import database_filename
 
 
@@ -30,6 +29,7 @@ base_command = SlashCommand(
 @slash_option(name="potato_accomplishment", required=True, description="Fuller description of the accomplishment. e.g. I coded for an 3 hours.", opt_type=OptionType.STRING)
 async def create_potato(ctx: SlashContext, potato_name: str, potato_type: str, potato_price: str, potato_accomplishment: str):
     user = ctx.author  # Get the user who invoked the command
+    potato_functions.pull_database()
     owner_name = user.username.title()
     owner_discord_id = user.id
     date = datetime.now().strftime('%Y-%m-%d')
@@ -49,10 +49,10 @@ async def create_potato(ctx: SlashContext, potato_name: str, potato_type: str, p
     # entries from new_potato variable gets added to all_potatoes dictionary
     # saves the list of all potatoes to a json file
     #################################################
+    await ctx.defer()
     new_potato = potato_functions.create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date)
     all_potatoes.append(new_potato)
     potato_functions.save_potatoes(all_potatoes,database_filename)
-    await ctx.defer()
     potato_functions.push_database('auto update')
 
     await ctx.send(f"Owner: {owner_name}\nPotato Name: {name}\n"
