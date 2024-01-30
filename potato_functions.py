@@ -97,8 +97,8 @@ def push_database(commit_message):
     repo.git.push(origin, repo.head.ref)
     print("database pushed")
 
-and this is the function that passes the tests, which can be added to the bottom of potato_functions.py
-```py
+    #and this is the function that passes the tests, which can be added to the bottom of potato_functions.py
+
 def discord_post_resizer(input_str):
     # Check if the input is not a string type
     if not isinstance(input_str, str):
