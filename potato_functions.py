@@ -32,9 +32,12 @@ def update_potato():
     # logic for how to find info here.
     pass
 
-def delete_potato():
+def delete_potato(potatoes_to_delete, all_potatoes):
     # logic for how to find info here
-    pass
+    deleted_potatoes = {(potato['name'], potato['owner_discord_id']) for potato in potatoes_to_delete}
+    updated_potatoes = [potato for potato in all_potatoes if
+                        (potato['name'], potato['owner_discord_id']) not in deleted_potatoes]
+    return updated_potatoes
 
 import os
 
@@ -146,3 +149,21 @@ def discord_post_resizer(input_str):
         input_str = input_str[split_pos:]
 
     return result
+def find_potato(datetime, discord_id,all_potatoes):
+    """
+    Find potatoes in the list based on datetime and discord_id.
+
+    Args:
+    - all_potatoes (list): List of all potatoes.
+    - datetime (str): Datetime to search for in potatoes.
+    - discord_id (int): Discord ID to search for in potatoes.
+
+    Returns:
+    - list: List of matching potatoes.
+    """
+    matching_potatoes = [
+        potato for potato in all_potatoes
+        if potato['date'] == datetime and potato['owner_discord_id'] == discord_id
+    ]
+
+    return matching_potatoes
