@@ -32,7 +32,7 @@ async def create_potato(ctx: SlashContext, potato_name: str, potato_type: str, p
     potato_functions.pull_database()
     owner_name = user.username.title()
     owner_discord_id = user.id
-    date = datetime.now().strftime('%Y-%m-%d')
+    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     name = potato_name
     potato_type = potato_type
