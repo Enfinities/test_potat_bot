@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import git
 database_filename = "my_potatoes.json"
+
 def create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date):
         potato = {"owner_name": owner_name,"owner_discord_id": owner_discord_id,"name": name,"potato_type": potato_type,"price": price,"accomplishment": accomplishment,"date": date}
         return potato
@@ -95,3 +96,53 @@ def push_database(commit_message):
     repo.index.commit(commit_message)
     repo.git.push(origin, repo.head.ref)
     print("database pushed")
+
+and this is the function that passes the tests, which can be added to the bottom of potato_functions.py
+```py
+def discord_post_resizer(input_str):
+    # Check if the input is not a string type
+    if not isinstance(input_str, str):
+        raise ValueError("Input must be a string")
+
+    # Check if the input is None or an empty string
+    if len(input_str) == 0:
+        return []
+
+    # Initialize the result list
+    result = []
+
+    # Process the input string in chunks of 2000 characters or less
+    while len(input_str) > 0:
+        if len(input_str) <= 2000:
+            # If the remaining string is 2000 characters or less, add it to the result
+            result.append(input_str)
+            break
+
+        # Find a suitable position to split the string
+        split_pos = 2000
+
+        # Iterate backward from 2000 to 1000
+        for i in range(2000, 1000, -1):
+            if input_str[i] == '\n':
+                split_pos = i + 1
+                break
+
+        # If no newline found, check for a period
+        if split_pos == 2000:
+            for i in range(2000, 1000, -1):
+                if input_str[i] == '.':
+                    split_pos = i + 1
+                    break
+
+        # If still no period found, check for a space
+        if split_pos == 2000:
+            for i in range(2000, 1000, -1):
+                if input_str[i] == ' ':
+                    split_pos = i + 1
+                    break
+
+        # Append the chunk to the result and remove it from the input string
+        result.append(input_str[:split_pos])
+        input_str = input_str[split_pos:]
+
+    return result
