@@ -72,10 +72,12 @@ async def read_potatoes(ctx: SlashContext):
     # 2. You can send the result back to the user using that await ctx.send function
     #   - Feel free to format it prettily, or just put the potato dictionary in there. Either works.
     #################################################
-    potato_by_id = potato_functions.read_potatoes_by_discord_id(all_potatoes,owner_discord_id)
+    potato_by_id = potato_functions.read_potatoes_by_discord_id(all_potatoes, owner_discord_id)
     format = potato_functions.format_achievements(potato_by_id)
-    await ctx.send(format)
-
+    posts = potato_functions.discord_post_resizer(format)
+    for post in posts:
+        if post:
+            await ctx.send(post)
 if __name__ == "__main__":
     try:
         all_potatoes = potato_functions.load_potatoes(database_filename)
