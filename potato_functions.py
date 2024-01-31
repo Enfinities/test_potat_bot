@@ -34,9 +34,9 @@ def update_potato():
 
 def delete_potato(potatoes_to_delete, all_potatoes):
     # logic for how to find info here
-    deleted_potatoes = {(potato['name'], potato['owner_discord_id']) for potato in potatoes_to_delete}
+    deleted_potatoes = {(potato['date'], potato['owner_discord_id']) for potato in potatoes_to_delete}
     updated_potatoes = [potato for potato in all_potatoes if
-                        (potato['name'], potato['owner_discord_id']) not in deleted_potatoes]
+                        (potato['date'], potato['owner_discord_id']) not in deleted_potatoes]
     return updated_potatoes
 
 import os
@@ -167,3 +167,8 @@ def find_potato(datetime, discord_id,all_potatoes):
     ]
 
     return matching_potatoes
+
+
+from datetime import datetime, timedelta
+
+
