@@ -89,6 +89,7 @@ if __name__ == "__main__":
 @base_command.subcommand(sub_cmd_name="delete_potato", sub_cmd_description="delete a potato.")
 @slash_option(name="potato_ID", required=True, description="Datetime of potato EG. '2024-03-22 00:40:23'", opt_type=OptionType.STRING)
 async def delete_potato(ctx: SlashContext, datetime: str):
+    await ctx.send("potato deleted")
     user = ctx.author
     discord_id = ctx.author.id
     potatoes_to_delete = potato_functions.find_potato(datetime,discord_id, all_potatoes)
