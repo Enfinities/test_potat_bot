@@ -79,12 +79,17 @@ async def read_potatoes(ctx: SlashContext):
             await ctx.send(post)
 
 @base_command.subcommand(sub_cmd_name="delete_potato", sub_cmd_description="delete a potato.")
-@slash_option(name="potato_id", required=True, description="datetime of potato eg. '2024-03-22 00:40:23'", opt_type=OptionType.STRING)
+@slash_option(name="datetime", required=True, description="Enter the date and time of the potato you want to delete to delete it. For example, '2024-03-22 00:40:23'", opt_type=OptionType.STRING)
 async def delete_potato(ctx: SlashContext, datetime: str):
     user = ctx.author
     discord_id = ctx.author.id
     potatoes_to_delete = potato_functions.find_potato(datetime,discord_id, all_potatoes)
-    potato_functions.delete_potato(potatoes_to_delete, all_potatoes)
+    all_potatoes = potato_functions.delete_potato(potatoes_to_delete, all_potatoes)
+    potato_functions.save_potatoes(all_potatoes, potato_functions.database_filename)
+    await ctx.defer()
+    potato_functions.pull_database()
+    potato_functions.push_database(f"{user.username.title()} deleted a potato")
+
     await ctx.send("potato deleted")
 if __name__ == "__main__":
     try:
