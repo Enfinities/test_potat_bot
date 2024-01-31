@@ -79,7 +79,7 @@ async def read_potatoes(ctx: SlashContext):
             await ctx.send(post)
 
 @base_command.subcommand(sub_cmd_name="delete_potato", sub_cmd_description="delete a potato.")
-@slash_option(name="datetime", required=True, description="Enter the date and time of the potato you want to delete to delete it. For example, '2024-03-22 00:40:23'", opt_type=OptionType.STRING)
+@slash_option(name="datetime", required=True, description="Enter an exact date & time of the potato you want to delete to delete it. eg '2024-03-22 00:40:23'", opt_type=OptionType.STRING)
 async def delete_potato(ctx: SlashContext, datetime: str):
     user = ctx.author
     discord_id = ctx.author.id
