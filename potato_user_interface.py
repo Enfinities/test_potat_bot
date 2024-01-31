@@ -81,16 +81,18 @@ async def read_potatoes(ctx: SlashContext):
 @base_command.subcommand(sub_cmd_name="delete_potato", sub_cmd_description="delete a potato.")
 @slash_option(name="datetime", required=True, description="Enter an exact date & time of the potato you want to delete to delete it. eg '2024-03-22 00:40:23'", opt_type=OptionType.STRING)
 async def delete_potato(ctx: SlashContext, datetime: str):
-    user = ctx.author
-    discord_id = ctx.author.id
-    potatoes_to_delete = potato_functions.find_potato(datetime,discord_id, all_potatoes)
-    all_potatoes = potato_functions.delete_potato(potatoes_to_delete, all_potatoes)
-    potato_functions.save_potatoes(all_potatoes, potato_functions.database_filename)
-    await ctx.defer()
-    potato_functions.pull_database()
-    potato_functions.push_database(f"{user.username.title()} deleted a potato")
+        global all_potatoes  # Declare all_potatoes as a global variable
 
-    await ctx.send("potato deleted")
+        user = ctx.author
+        discord_id = ctx.author.id
+        potatoes_to_delete = potato_functions.find_potato(datetime, discord_id, all_potatoes)
+        all_potatoes = potato_functions.delete_potato(potatoes_to_delete, all_potatoes)
+        potato_functions.save_potatoes(all_potatoes, potato_functions.database_filename)
+        await ctx.defer()
+        potato_functions.pull_database()
+        potato_functions.push_database(f"{user.username.title()} deleted a potato")
+
+        await ctx.send("potato deleted")
 if __name__ == "__main__":
     try:
         all_potatoes = potato_functions.load_potatoes(database_filename)
