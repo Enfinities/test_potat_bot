@@ -3,6 +3,7 @@ from pathlib import Path
 import git
 from decouple import config
 database_filename = config("DATABASE_FILEPATH")
+current_directory = config("CURRENT_DIRECTORY")
 
 def create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date):
         potato = {"owner_name": owner_name,"owner_discord_id": owner_discord_id,"name": name,"potato_type": potato_type,"price": price,"accomplishment": accomplishment,"date": date}
@@ -81,7 +82,6 @@ def format_achievements(achievements):
     return formatted_output
 
 def pull_database():
-    current_directory = Path.cwd()
     repo = git.Repo(str(current_directory))
     origin = repo.remote("origin")
     origin.fetch()
@@ -92,7 +92,6 @@ def pull_database():
 
 
 def push_database(commit_message):
-    current_directory = Path.cwd()
     repo = git.Repo(str(current_directory))
     origin = repo.remote("origin")
     origin.fetch()
