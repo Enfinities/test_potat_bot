@@ -1,7 +1,8 @@
 import json
 from pathlib import Path
 import git
-database_filename = "my_potatoes.json"
+from decouple import config
+database_filename = config("DATABASE_FILEPATH")
 
 def create_potato(owner_name, owner_discord_id, name, potato_type, price, accomplishment, date):
         potato = {"owner_name": owner_name,"owner_discord_id": owner_discord_id,"name": name,"potato_type": potato_type,"price": price,"accomplishment": accomplishment,"date": date}
