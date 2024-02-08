@@ -9,6 +9,7 @@ git config --global user.name $GITHUB_USERNAME
 git config --global user.email $GITHUB_EMAIL
 curl -O https://bootstrap.pypa.io/get-pip.py
 python3.11 get-pip.py
+sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf
 git clone git@github.com:Enfinities/test_potat_bot.git
 cd test_potat_bot
 echo "BOT_TOKEN=<MTIwNDE0OTI5NzcyMjE2MzI0MQ.G8_cKO.IOuteKr4NiYUoB4XJLJfBmMzFpQ93fuwWw_nLw>" > .env
