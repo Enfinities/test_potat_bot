@@ -2,7 +2,7 @@
 
 GITHUB_USERNAME="Enfiities"
 GITHUB_EMAIL="testdummymail@yahoo.com"
-curl -0 https://raw.githubusercontent.com/Enfinities/download_py3.11/5a599abe767c7c3dab383dafa7dfc77aa1c389fd/download_python311.bash -o download_python311
+curl -0 https://raw.githubusercontent.com/Enfinities/download_py3.11/5a599abe767c7c3dab383dafa7dfc77aa1c389fd/download_python311.bash -o download_python
 chmod +x download_python
 ./download_python
 sudo yum update -y
